@@ -1,0 +1,41 @@
+project:
+  name: "Generative AI Assistant for Technical Knowledge Retrieval"
+
+ingest:
+  chunk_size: 900
+  chunk_overlap: 150
+  min_chunk_chars: 50
+  max_docs: null
+  workers: 1
+
+embeddings:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  batch_size: 64
+  normalize: true
+
+retrieval:
+  top_k_default: 4
+  max_context_chars: 6500
+
+llm:
+  provider: "local"   # "local" or "openai"
+  local_model_name: "google/flan-t5-base"
+  max_new_tokens: 256
+  temperature: 0.2
+
+prompt:
+  system: |
+    You are a helpful technical assistant. Answer using only the provided context.
+    If the answer is not in the context, say you don't know and suggest what to look for.
+  template: |
+    Context:
+    {context}
+
+    Question: {question}
+
+    Instructions:
+    - Be concise.
+    - Include citations in the form [source:filename#chunk_id].
+    - Do not invent facts.
+
+    Answer:
