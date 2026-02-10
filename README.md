@@ -125,14 +125,23 @@ shows source files used
 
 📂 Project Structure
 Generative_AI_Tech_Knowledge_Retrieval/
+
 ├── app/                # Streamlit UI + API
+
 ├── rag_pipeline/       # Ingestion, retrieval, RAG logic
+
 ├── data/
+
 │   ├── raw/            # Uploaded documents
+
 │   ├── processed/      # Chunked documents
+
 │   └── index/          # FAISS index + metadata
+
 ├── config/             # Configurable parameters
+
 ├── requirements.txt
+
 └── README.md
 
 🔍 Evaluation & Reliability
